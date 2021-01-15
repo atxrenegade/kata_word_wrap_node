@@ -1,0 +1,19 @@
+{
+  "name": "code_challenge",
+  "version": "1.0.0",
+  "description": "kata word wrap node",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atxrenegade/kata_word_wrap_node.git"
+  },
+  "author": "Harleigh Abel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atxrenegade/kata_word_wrap_node/issues"
+  },
+  "homepage": "https://github.com/atxrenegade/kata_word_wrap_node#readme"
+}

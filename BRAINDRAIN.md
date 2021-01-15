@@ -33,8 +33,8 @@ POSSIBLE SOLUTIONS:
 ***Is no punctuation a hint to use regex? 
 
 Now I create a hardcoded example on a and play with it on a repl.it
-Normally I would google most efficeint
-but for the sake of this challenge I use a repl to hardcode and example.
+Normally I would google most efficient
+but for the sake of this challenge I use a repl to hard code and example.
 I like repl.it because it's quick sandbox/env for pretty much every language I need. 
 
 In the repl in code this:
@@ -70,14 +70,14 @@ for(let i = 0; i < userStrArr.length; i++){
 console.log(newStr);
 
 // corner cases - words larger than the column count
-// dont forget to include hypens in the column count
+// don't forget to include hyphens in the column count
 
 I'm pretty sure there is a more effective way to do this.
 
 Time to google recursive and regex alternatives:
 
 Hmmmm...okay, many proposed versions on stack overflow but when I actually test them
-the dont work, or they are simplified but in my opinion harder to read.  Im far from a regex master so I think I will complete this exercise in revisit it in Ruby. 
+the don't work, or they are simplified but in my opinion harder to read.  Im far from a regex master so I think I will complete this exercise in revisit it in Ruby. 
 
 In no way do I think that my solution is the most elegant but it's working.
 

@@ -76,6 +76,11 @@ I'm pretty sure there is a more effective way to do this.
 
 Time to google recursive and regex alternatives:
 
+Hmmmm...okay, many proposed versions on stack overflow but when I actually test them
+the dont work, or they are simplified but in my opinion harder to read.  Im far from a regex master so I think I will complete this exercise in revisit it in Ruby. 
+
+In no way do I think that my solution is the most elegant but it's working.
+
 
 
 

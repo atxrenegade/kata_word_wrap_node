@@ -1,1 +1,2 @@
-var WordWrap = require("./WordWrap");
+var WordWrap = require('./lib/main');
+var ReadlineSync = require('readline-sync');

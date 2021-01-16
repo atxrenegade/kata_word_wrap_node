@@ -1,5 +1,5 @@
 {
-  "name": "code_challenge",
+  "name": "kata_word_wrap_node",
   "version": "1.0.0",
   "description": "kata word wrap node",
   "main": "index.js",

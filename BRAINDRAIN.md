@@ -81,6 +81,45 @@ the don't work, or they are simplified but in my opinion harder to read.  Im far
 
 In no way do I think that my solution is the most elegant but it's working.
 
+UPDATE: I noticed corner cases that werent working like words that were more than double the specified column length, and wasn't happy with the redundant if statements in my for loop, so I rewrote and reworked in repl.it until I worked out something I was satisfied with and then translated it to Ruby as well.
+
+This is what I finished with: 
+var colNum = 5;
+
+var userStr = "a ab abc abcd abcde abcdef abcdefg abcdefghijklmno a ab abc ab a ab a a ab abc abcd abcde abcdef abcdefg abcdefghijklmno a ab abc ab a ab a";
+var wordArr = userStr.split(" ");
+
+var newStr = "";
+var colIdx = 0;
+var arrIdx = 0;
+
+function breakWord(colNum, colIdx, arrIdx, word= null){
+    word = word || wordArr[arrIdx];
+    if (word != null) wordLen = word.length;
+
+    if (colIdx > colNum || (colIdx + wordLen) > colNum){
+        var testChar = newStr.slice(-1);
+        if (testChar != '\n') newStr += '\n';
+        colIdx = 0;
+    }
+
+    if (wordLen >= colNum){
+        newStr += `${word.substring(0, colNum - 1)}-\n`;
+        colIndex = word.substring(colNum - 1).length;
+        word = word.substring(colNum - 1);  
+    } else if (wordLen <= colNum && word != undefined){
+        newStr += `${word} `; 
+        colIdx += wordLen + 1;
+        arrIdx++;      
+        word = wordArr[arrIdx];  
+    }  
+
+    if (arrIdx < wordArr.length) breakWord(colNum, colIdx, arrIdx, word); 
+}
+
+breakWord(colNum, colIdx, arrIdx);  
+console.log(newStr);
+
 
 
 

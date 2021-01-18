@@ -1,7 +1,7 @@
 # Kata Word Wrap Node
 
 
-A template of README best practices to make your README simple to understand and easy to use. 
+A simple Node CLI application to demonstrate word wrap algorithm. 
 
 ## Table of Contents
 

@@ -18,5 +18,11 @@
   "homepage": "https://github.com/atxrenegade/kata_word_wrap_node#readme",
   "dependencies": {
     "readline-sync": "^1.4.10"
+  },
+  "bin": {
+    "wordWrap": "./index.js"
+  },
+  "pkg": {
+    "assets": "node_modules/**/*"
   }
 }

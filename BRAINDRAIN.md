@@ -1,76 +1,76 @@
-First thing I do is make sure I understand the questions. 
-Are there any examples of desired output?
+First thing I do is make sure I understand the questions.   
+Are there any examples of desired output?  
 
-It says try to break lines at word boundaries, ** but you have to break words even if there isn't a word boundary, so what is the leeway on before the line break? 2-3 characters?  I going to go with three characters, if the word boundary is more than 3 characters from a line break I will break the word.
-***
-CORRECTION: No breaking words, only breaking lines unless word is larger than column length then break and add hyphen
+It says try to break lines at word boundaries, ** but you have to break words even if there isn't a word   boundary, so what is the leeway on before the line break? 2-3 characters?  I going to go with three   characters, if the word boundary is more than 3 characters from a line break I will break the word.  
 
-input: string and column number
-output: wrapped string
+CORRECTION: No breaking words, only breaking lines unless word is larger than column length then break and  add hyphen
 
-requirements: 
--class called Wrapper
--static method named wrap
--lines are NO LONGER than the column number
+input: string and column number  
+output: wrapped string  
 
-1st prop0sed solution:
-get string and column number from user input or command line
-split each string to words array
-create a new empty string
-create a line character counter
-create a word counter
+requirements:  
+-class called Wrapper  
+-static method named wrap  
+-lines are NO LONGER than the column number  
 
-while linecounter + wordcounter + 1 is less than column number add word to new string, else break,
+1st proposed solution:  
+get string and column number from user input or command line  
+split each string to words array  
+create a new empty string  
+create a line character counter  
+create a word counter    
 
-XXX  add in 3 character leeway
+while linecounter + wordcounter + 1 is less than column number add word to new string, else break,  
 
-POSSIBLE SOLUTIONS:
+XXX  add in 3 character leeway  
 
-1. implement as loop 
-2. implement recursively
-3. implement with regex?
+POSSIBLE SOLUTIONS:  
 
-***Is no punctuation a hint to use regex? 
+1. implement as loop   
+2. implement recursively  
+3. implement with regex?  
 
-Now I create a hardcoded example on a and play with it on a repl.it
-Normally I would google most efficient
-but for the sake of this challenge I use a repl to hard code and example.
-I like repl.it because it's quick sandbox/env for pretty much every language I need. 
+***Is no punctuation a hint to use regex?   
+
+Now I create a hardcoded example on a and play with it on a repl.it  
+Normally I would google most efficient  
+but for the sake of this challenge I use a repl to hard code and example.  
+I like repl.it because it's quick sandbox/env for pretty much every language I need.   
 
 In the repl in code this:
 
-var colNum = 8;
-var userStr = "I'm baby echo park forage hell of woke deep v, ethical vegan dreamcatcher. Sriracha ethical offal tbh, af austin single-origin coffee chartreuse poke. Fanny pack blog everyday carry raclette, scenester 90's lo-fi thundercats green juice bespoke beard DIY. Hoodie 8-bit taiyaki marfa. Etsy roof party 8-bit VHS ugh, gentrify trust fund everyday carry slow-carb.";
+    var colNum = 8;
+    var userStr = "I'm baby echo park forage hell of woke deep v, ethical vegan dreamcatcher. Sriracha ethical offal tbh, af austin single-origin coffee chartreuse poke. Fanny pack blog everyday carry raclette, scenester 90's lo-fi thundercats green juice bespoke beard DIY. Hoodie 8-bit taiyaki marfa. Etsy roof party 8-bit VHS ugh, gentrify trust fund everyday carry slow-carb.";
 
-var userStrArr = userStr.split(" ");
-var newStr = "";
-var colCount = 0;
+    var userStrArr = userStr.split(" ");
+    var newStr = "";
+    var colCount = 0;
 
-for(let i = 0; i < userStrArr.length; i++){
-    //console.log('start:' + colCount);
-    let word = userStrArr[i];
-    let wordLen = userStrArr[i].length;
-    
-    if ((wordLen + colCount) < colNum){
-       newStr += `${word}`;
-       colCount += (wordLen + 1)
-       //console.log('true');
-    } else if (wordLen > (colNum)) {
-        newStr+= `\n${word.substring(0,colNum - 1)}-\n${word.substring(colNum - 1)} `;
-        colCount = word.substring(colNum - 1).length; 
-        //console.log(word.substring(colNum - 1));
-        //console.log('break: ' + colCount); 
-    } else {
-        newStr += `\n${word} `;
-        colCount = wordLen;
+    for(let i = 0; i < userStrArr.length; i++){
+        //console.log('start:' + colCount);
+        let word = userStrArr[i];
+        let wordLen = userStrArr[i].length;
+        
+        if ((wordLen + colCount) < colNum){
+        newStr += `${word}`;
+        colCount += (wordLen + 1)
+        //console.log('true');
+        } else if (wordLen > (colNum)) {
+            newStr+= `\n${word.substring(0,colNum - 1)}-\n${word.substring(colNum - 1)} `;
+            colCount = word.substring(colNum - 1).length; 
+            //console.log(word.substring(colNum - 1));
+            //console.log('break: ' + colCount); 
+        } else {
+            newStr += `\n${word} `;
+            colCount = wordLen;
+        }
+        //console.log('end: ' + colCount);
     }
-    //console.log('end: ' + colCount);
-}
 
-console.log(newStr);
+    console.log(newStr);
 
-// corner cases - words larger than the column count
-// don't forget to include hyphens in the column count
+    // corner cases - words larger than the column count
+    // don't forget to include hyphens in the column count
 
 I'm pretty sure there is a more effective way to do this.
 
@@ -83,46 +83,40 @@ In no way do I think that my solution is the most elegant but it's working.
 
 UPDATE: I noticed corner cases that werent working like words that were more than double the specified column length, and wasn't happy with the redundant if statements in my for loop, so I rewrote and reworked in repl.it until I worked out something I was satisfied with and then translated it to Ruby as well.
 
-This is what I finished with: 
-var colNum = 5;
+This is what I finished with:   
 
-var userStr = "a ab abc abcd abcde abcdef abcdefg abcdefghijklmno a ab abc ab a ab a a ab abc abcd abcde abcdef abcdefg abcdefghijklmno a ab abc ab a ab a";
-var wordArr = userStr.split(" ");
+    var colNum = 5;
 
-var newStr = "";
-var colIdx = 0;
-var arrIdx = 0;
+    var userStr = "a ab abc abcd abcde abcdef abcdefg abcdefghijklmno a ab abc ab a ab a a ab abc abcd abcde abcdef abcdefg abcdefghijklmno a ab abc ab a ab a";
+    var wordArr = userStr.split(" ");
 
-function breakWord(colNum, colIdx, arrIdx, word= null){
-    word = word || wordArr[arrIdx];
-    if (word != null) wordLen = word.length;
+    var newStr = "";
+    var colIdx = 0;
+    var arrIdx = 0;
 
-    if (colIdx > colNum || (colIdx + wordLen) > colNum){
-        var testChar = newStr.slice(-1);
-        if (testChar != '\n') newStr += '\n';
-        colIdx = 0;
+    function breakWord(colNum, colIdx, arrIdx, word= null){
+        word = word || wordArr[arrIdx];
+        if (word != null) wordLen = word.length;
+
+        if (colIdx > colNum || (colIdx + wordLen) > colNum){
+            var testChar = newStr.slice(-1);
+            if (testChar != '\n') newStr += '\n';
+            colIdx = 0;
+        }
+
+        if (wordLen >= colNum){
+            newStr += `${word.substring(0, colNum - 1)}-\n`;
+            colIndex = word.substring(colNum - 1).length;
+            word = word.substring(colNum - 1);  
+        } else (wordLen <= colNum && word != undefined){
+            newStr += `${word} `; 
+            colIdx += wordLen + 1;
+            arrIdx++;      
+            word = wordArr[arrIdx];  
+        }  
+
+        if (arrIdx < wordArr.length) breakWord(colNum, colIdx, arrIdx, word); 
     }
 
-    if (wordLen >= colNum){
-        newStr += `${word.substring(0, colNum - 1)}-\n`;
-        colIndex = word.substring(colNum - 1).length;
-        word = word.substring(colNum - 1);  
-    } else if (wordLen <= colNum && word != undefined){
-        newStr += `${word} `; 
-        colIdx += wordLen + 1;
-        arrIdx++;      
-        word = wordArr[arrIdx];  
-    }  
-
-    if (arrIdx < wordArr.length) breakWord(colNum, colIdx, arrIdx, word); 
-}
-
-breakWord(colNum, colIdx, arrIdx);  
-console.log(newStr);
-
-
-
-
-
-
-
+    breakWord(colNum, colIdx, arrIdx);  
+    console.log(newStr);

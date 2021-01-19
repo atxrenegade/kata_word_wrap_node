@@ -9,12 +9,12 @@ A simple Node CLI application to demonstrate word wrap algorithm.
 
 ## Installation
 
-Download Repo
-Run npm install to install required dependencies
+Download Repo  
+Run npm install to install required dependencies  
 
 ## Usage
 
-Once installed, open the program directory 
+Once installed, open the program directory   
 Type node.index.js to execute
 
 

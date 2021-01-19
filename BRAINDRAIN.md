@@ -108,12 +108,14 @@ This is what I finished with:
             newStr += `${word.substring(0, colNum - 1)}-\n`;
             colIndex = word.substring(colNum - 1).length;
             word = word.substring(colNum - 1);  
-        } else (wordLen <= colNum && word != undefined){
+        } else if(wordLen <= colNum && word != undefined){
             newStr += `${word} `; 
             colIdx += wordLen + 1;
             arrIdx++;      
             word = wordArr[arrIdx];  
-        }  
+        }  else {
+            return;
+        }
 
         if (arrIdx < wordArr.length) breakWord(colNum, colIdx, arrIdx, word); 
     }

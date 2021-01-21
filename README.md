@@ -15,8 +15,6 @@ Run npm install to install required dependencies
 ## Usage
 
 Once installed, open the program directory   
-Type node.index.js to execute
+Type node index.js to execute
 
 
-
-.
